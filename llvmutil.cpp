@@ -44,6 +44,7 @@
 #else
   #include <llvm/IR/Instructions.h>
   #include <llvm/IR/BasicBlock.h>
+  #include <llvm/Support/raw_ostream.h>
 #endif
 #include <set>
 #include <map>
@@ -1516,7 +1517,7 @@ lDumpValue(llvm::Value *v, std::set<llvm::Value *> &done) {
         return;
 
     fprintf(stderr, "  ");
-    v->dump();
+    v->print(llvm::errs());
     done.insert(v);
 
     if (inst == NULL)
