@@ -1629,7 +1629,7 @@ void CWriter::printConstant(llvm::Constant *CPV, bool Static) {
       Out << "\"";
       //const uint64_t *Ptr64 = CPV->getUniqueInteger().getRawData();
       const uint64_t *Ptr64 = CI->getValue().getRawData();
-      for (int i = 0; i < Ty->getPrimitiveSizeInBits(); i++) {
+      for (unsigned i = 0; i < Ty->getPrimitiveSizeInBits(); i++) {
         Out << ((Ptr64[i / (sizeof (uint64_t) * 8)] >> (i % (sizeof (uint64_t) * 8))) & 1);
       }
       Out << "\"";
